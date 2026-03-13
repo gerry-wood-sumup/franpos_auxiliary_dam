@@ -1,0 +1,6 @@
+title: Franpos Auxiliary DAM
+description: Digital Asset Management store for media used across FranPOS POS, Kiosk, and consumer-facing devices.
+
+exclude:
+  - scripts/
+  - "*.sh"

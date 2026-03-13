@@ -22,9 +22,9 @@ Static image assets displayed across POS, Kiosk, and consumer-facing surfaces.
 
 Organized by the modifier/menu category they belong to:
 
-| Path | Description |
-|------|-------------|
-| `images/modifiers/toppings/` | Topping modifier images shown on the Kiosk and POS modifier selection screens |
+| Path | Browse | Description |
+|------|--------|-------------|
+| `images/modifiers/toppings/` | [View assets](https://gerry-wood-sumup.github.io/franpos_auxiliary_dam/images/modifiers/toppings/) | Topping modifier images shown on the Kiosk and POS modifier selection screens |
 
 **Accepted formats:** `.png`, `.jpg`, `.webp`
 **Recommended specs:** PNG with transparency, square or consistent aspect ratio per category
@@ -61,3 +61,41 @@ Assets that do not clearly fit into any of the above categories. Prefer placing 
 2. For images under `modifiers/`, create a subfolder matching the modifier group name if one does not already exist (e.g., `images/modifiers/syrups/`).
 3. Ensure the filename matches the FranPOS modifier/item display name exactly.
 4. Commit with a descriptive message indicating what was added and which menu category it belongs to.
+
+---
+
+## Browsing Assets
+
+Each media folder contains an `index.html` that lists every asset with a preview thumbnail and its direct URL. These pages are served automatically via **GitHub Pages**.
+
+Navigate the index pages by starting at the top-level folder for the media type you need (e.g., `images/modifiers/toppings/index.html`) and following the breadcrumb links.
+
+> Index pages are auto-generated — do not edit them by hand. Changes will be overwritten on the next push.
+
+---
+
+## Automation
+
+### Index Page Generation & Deployment
+
+On every push to `main`, the **GitHub Actions workflow** ([`.github/workflows/generate-indexes.yml`](.github/workflows/generate-indexes.yml)) handles the full pipeline:
+
+1. Runs [`scripts/generate-indexes.sh`](scripts/generate-indexes.sh) to regenerate all `index.html` files
+2. Commits any updated `index.html` files back to `main`
+3. Deploys the site to GitHub Pages
+
+This ensures Pages is always deployed with up-to-date indexes, and only once per push. GitHub Pages is configured to deploy via **GitHub Actions** (not from a branch).
+
+**The script discovers media directories automatically.** Any new top-level directory added to the repo (e.g., `videos/`, `sounds/`) will be scanned and indexed as long as it contains supported media files. No configuration changes are required.
+
+Directories excluded from scanning: `.git`, `.github`, `scripts`, `node_modules`. To exclude additional directories, edit the `EXCLUDED_DIRS` array at the top of `scripts/generate-indexes.sh`.
+
+To regenerate indexes locally before pushing:
+
+```bash
+bash scripts/generate-indexes.sh
+```
+
+### Search Engine Blocking
+
+A [`robots.txt`](robots.txt) at the repo root instructs all crawlers to not index any content on the GitHub Pages site.
