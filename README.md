@@ -39,8 +39,7 @@ Organized by Company ID (CID) for merchant-specific overrides, with a `global/` 
 
 | Path | Browse | Description |
 |------|--------|-------------|
-| `kiosk-carousel/global/` | [View assets](https://gerry-wood-sumup.github.io/franpos_auxiliary_dam/kiosk-carousel/global/) | Default carousel images used by any kiosk without a CID-specific folder |
-| `kiosk-carousel/<CID>/` | — | Carousel images for a specific merchant (6-digit numeric CID, e.g. `206100`) |
+| `kiosk-carousel/` | [View all folders](https://gerry-wood-sumup.github.io/franpos_auxiliary_dam/kiosk-carousel/) | Navigate global and CID-specific carousel image folders |
 
 **Accepted formats:** `.png`, `.jpg`, `.webp`
 
