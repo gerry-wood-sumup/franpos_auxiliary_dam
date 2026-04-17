@@ -27,7 +27,7 @@ Organized by the modifier/menu category they belong to:
 
 | Path | Browse | Description |
 |------|--------|-------------|
-| `images/modifiers/toppings/` | [View assets](https://gerry-wood-sumup.github.io/franpos_auxiliary_dam/images/modifiers/toppings/) | Topping modifier images shown on the Kiosk and POS modifier selection screens |
+| `images/` | [View assets](https://gerry-wood-sumup.github.io/franpos_auxiliary_dam/images/) | Navigate all image asset folders |
 
 **Accepted formats:** `.png`, `.jpg`, `.webp`
 **Recommended specs:** PNG with transparency, square or consistent aspect ratio per category
@@ -39,7 +39,7 @@ Organized by Company ID (CID) for merchant-specific overrides, with a `global/` 
 
 | Path | Browse | Description |
 |------|--------|-------------|
-| `kiosk-carousel/` | [View all folders](https://gerry-wood-sumup.github.io/franpos_auxiliary_dam/kiosk-carousel/) | Navigate global and CID-specific carousel image folders |
+| `kiosk-carousel/` | [View assets](https://gerry-wood-sumup.github.io/franpos_auxiliary_dam/kiosk-carousel/) | Navigate global and CID-specific carousel image folders |
 
 **Accepted formats:** `.png`, `.jpg`, `.webp`
 
@@ -64,20 +64,36 @@ Organized by Company ID (CID) for merchant-specific overrides, with a `global/` 
 ### `documents/`
 Printable or referenceable documents such as menus, nutrition guides, training materials, or compliance forms.
 
+| Path | Browse | Description |
+|------|--------|-------------|
+| `documents/` | [View assets](https://gerry-wood-sumup.github.io/franpos_auxiliary_dam/documents/) | All document assets |
+
 **Accepted formats:** `.pdf`, `.docx`
 
 ### `sounds/`
 Audio assets used for alerts, confirmations, or ambient experience on Kiosk and POS devices.
+
+| Path | Browse | Description |
+|------|--------|-------------|
+| `sounds/` | [View assets](https://gerry-wood-sumup.github.io/franpos_auxiliary_dam/sounds/) | All audio assets |
 
 **Accepted formats:** `.mp3`, `.wav`, `.ogg`
 
 ### `videos/`
 Video assets for screensavers, attract loops, or promotional display on Kiosk and consumer-facing screens.
 
+| Path | Browse | Description |
+|------|--------|-------------|
+| `videos/` | [View assets](https://gerry-wood-sumup.github.io/franpos_auxiliary_dam/videos/) | All video assets |
+
 **Accepted formats:** `.mp4`, `.mov`, `.webm`
 
 ### `miscellaneous/`
 Assets that do not clearly fit into any of the above categories. Prefer placing assets in a specific folder when possible.
+
+| Path | Browse | Description |
+|------|--------|-------------|
+| `miscellaneous/` | [View assets](https://gerry-wood-sumup.github.io/franpos_auxiliary_dam/miscellaneous/) | All miscellaneous assets |
 
 ---
 
