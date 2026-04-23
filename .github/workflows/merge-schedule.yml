@@ -1,0 +1,91 @@
+name: Scheduled PR Merge
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+jobs:
+  merge-scheduled-prs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Merge scheduled PRs
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const tzOffsets = {
+              'EST': '-05:00', 'EDT': '-04:00',
+              'CST': '-06:00', 'CDT': '-05:00',
+              'MST': '-07:00', 'MDT': '-06:00',
+              'PST': '-08:00', 'PDT': '-07:00',
+              'UTC': '+00:00', 'GMT': '+00:00',
+            };
+
+            const { data: prs } = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              per_page: 100,
+            });
+
+            const now = Date.now();
+
+            for (const pr of prs) {
+              const body = pr.body || '';
+              const match = body.match(
+                /\/schedule\s+(\d{4}-\d{2}-\d{2})\s+(\d{1,2}:\d{2})\s*(AM|PM)\s+(\w+)/i
+              );
+              if (!match) continue;
+
+              const [, date, time, ampm, tzAbbr] = match;
+              const offset = tzOffsets[tzAbbr.toUpperCase()];
+              if (!offset) {
+                console.log(`PR #${pr.number}: unrecognised timezone "${tzAbbr}", skipping`);
+                continue;
+              }
+
+              let [h, m] = time.split(':').map(Number);
+              if (ampm.toUpperCase() === 'PM' && h !== 12) h += 12;
+              if (ampm.toUpperCase() === 'AM' && h === 12) h = 0;
+
+              const isoStr = `${date}T${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:00${offset}`;
+              const scheduledTime = new Date(isoStr).getTime();
+
+              if (isNaN(scheduledTime)) {
+                console.log(`PR #${pr.number}: could not parse schedule "${match[0]}", skipping`);
+                continue;
+              }
+
+              console.log(`PR #${pr.number}: scheduled for ${isoStr} — now ${new Date(now).toISOString()}`);
+
+              if (now < scheduledTime) continue;
+
+              try {
+                await github.rest.pulls.merge({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  pull_number: pr.number,
+                  merge_method: 'squash',
+                });
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: pr.number,
+                  body: `✅ Merged automatically via scheduled merge (\`${match[0].trim()}\`).`,
+                });
+                console.log(`Merged PR #${pr.number}`);
+              } catch (err) {
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: pr.number,
+                  body: `❌ Scheduled merge failed: ${err.message}\n\nPlease merge manually or resolve any conflicts.`,
+                });
+                console.error(`Failed to merge PR #${pr.number}: ${err.message}`);
+              }
+            }

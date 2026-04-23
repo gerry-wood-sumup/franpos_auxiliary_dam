@@ -12,8 +12,12 @@ franpos_modifier_cms/
 │   └── modifiers/
 │       └── toppings/
 ├── kiosk-carousel/
-│   ├── global/
-│   └── <CID>/          (6-digit numeric Company ID, e.g. 206100)
+│   ├── live/
+│   │   ├── global/
+│   │   └── <CID>/      (6-digit numeric Company ID, e.g. 206100)
+│   └── staging/
+│       ├── global/
+│       └── <CID>/
 ├── documents/
 ├── sounds/
 ├── videos/
@@ -35,15 +39,17 @@ Organized by the modifier/menu category they belong to:
 ### `kiosk-carousel/`
 Promotional images displayed in the kiosk carousel/attract loop.
 
-Organized by Company ID (CID) for merchant-specific overrides, with a `global/` fallback:
+Split into two environments — `live/` for production kiosks and `staging/` for dev/staging builds. Within each environment, images are organized by Company ID (CID) for merchant-specific overrides, with a `global/` fallback used when no CID folder exists.
 
 | Path | Browse | Description |
 |------|--------|-------------|
-| `kiosk-carousel/` | [View assets](https://gerry-wood-sumup.github.io/franpos_auxiliary_dam/kiosk-carousel/) | Navigate global and CID-specific carousel image folders |
+| `kiosk-carousel/` | [View all folders](https://gerry-wood-sumup.github.io/franpos_auxiliary_dam/kiosk-carousel/) | Navigate live and staging carousel image folders |
 
-**Accepted formats:** `.png`, `.jpg`, `.webp`
+**Accepted formats:** `.png`, `.jpg`, `.jpeg`, `.gif`, `.webp`, `.svg`
 
-**CID resolution logic (kiosk):** The kiosk requests `kiosk-carousel/<CID>/index.json`. If that path does not exist, it falls back to `kiosk-carousel/global/index.json`.
+**CID resolution logic (kiosk):**
+- **Production:** requests `kiosk-carousel/live/<CID>/index.json`; falls back to `kiosk-carousel/live/global/index.json`
+- **Dev/Staging:** requests `kiosk-carousel/staging/<CID>/index.json`; falls back to `kiosk-carousel/staging/global/index.json`
 
 **`index.json` format** (auto-generated alongside `index.html` in each leaf folder):
 ```json
@@ -57,7 +63,7 @@ Organized by Company ID (CID) for merchant-specific overrides, with a `global/` 
 ```
 
 **Adding a new CID:**
-1. Create a folder named with the 6-digit CID under `kiosk-carousel/` (e.g. `kiosk-carousel/206100/`).
+1. Create a folder named with the 6-digit CID under the appropriate environment (e.g. `kiosk-carousel/live/206100/`).
 2. Add the desired carousel images to that folder.
 3. Commit and push — `index.html` and `index.json` are generated automatically.
 
@@ -143,6 +149,21 @@ To regenerate indexes locally before pushing:
 ```bash
 bash scripts/generate-indexes.sh
 ```
+
+### Scheduled PR Merges
+
+The workflow [`.github/workflows/merge-schedule.yml`](.github/workflows/merge-schedule.yml) runs every 15 minutes and auto-merges any open PR whose description contains a `/schedule` command once the specified date and time is reached.
+
+**Command format** (add anywhere in the PR body):
+```
+/schedule 2026-04-25 10:30 AM EST
+```
+
+Supported timezone abbreviations: `EST`, `EDT`, `CST`, `CDT`, `MST`, `MDT`, `PST`, `PDT`, `UTC`, `GMT`.
+
+When the PR is merged the workflow posts a comment confirming the scheduled merge. If the merge fails (e.g. conflicts or branch protection), a failure comment is posted instead so the author is notified.
+
+The workflow can also be triggered manually via **Actions → Scheduled PR Merge → Run workflow** to test without waiting for the next cron tick.
 
 ### Search Engine Blocking
 

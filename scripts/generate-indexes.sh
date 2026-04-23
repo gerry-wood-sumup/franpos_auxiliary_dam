@@ -205,14 +205,18 @@ generate_dir_index() {
     find "$dir" -maxdepth 1 -mindepth 1 -type d -not -name '.*' -print0 | sort -z
   )
 
-  # For kiosk-carousel: pin global first, then remaining folders in numeric order
-  if [[ "$folder_name" == "kiosk-carousel" ]]; then
+  # For direct children of kiosk-carousel (live/, staging/): pin global first, then CIDs numerically
+  local parent_name
+  parent_name="$(basename "$(dirname "$dir")")"
+  if [[ "$parent_name" == "kiosk-carousel" ]]; then
     local cid_dirs=()
     for d in "${subdirs[@]}"; do
       [[ "$d" != "global" ]] && cid_dirs+=("$d")
     done
-    IFS=$'\n' read -r -d '' -a cid_dirs <<< "$(printf '%s\n' "${cid_dirs[@]}" | sort -n)" || true
-    subdirs=("global" "${cid_dirs[@]}")
+    if (( ${#cid_dirs[@]} > 0 )); then
+      IFS=$'\n' read -r -d '' -a cid_dirs <<< "$(printf '%s\n' "${cid_dirs[@]}" | sort -n)" || true
+    fi
+    subdirs=("global" ${cid_dirs[@]+"${cid_dirs[@]}"})
   fi
 
   {
