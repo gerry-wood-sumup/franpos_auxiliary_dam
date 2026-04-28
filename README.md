@@ -109,12 +109,86 @@ Assets that do not clearly fit into any of the above categories. Prefer placing 
 - Names should match the **exact display name** used in FranPOS so assets can be mapped programmatically.
 - Avoid special characters other than spaces, hyphens (`-`), and parentheses.
 
-## Adding New Assets
+## Adding & Deploying Assets
 
-1. Place the file in the appropriate folder for its media type.
-2. For images under `modifiers/`, create a subfolder matching the modifier group name if one does not already exist (e.g., `images/modifiers/syrups/`).
-3. Ensure the filename matches the FranPOS modifier/item display name exactly.
-4. Commit with a descriptive message indicating what was added and which menu category it belongs to.
+### Prerequisites
+
+If you haven't already, you'll need to clone this repository to your computer once:
+
+```bash
+git clone https://github.com/gerry-wood-sumup/franpos_auxiliary_dam.git
+cd franpos_auxiliary_dam
+```
+
+You'll also need [Git](https://git-scm.com/downloads) installed. To check, run `git --version` in your terminal.
+
+---
+
+### Adding kiosk carousel images
+
+**For staging** (dev/staging kiosk builds):
+
+1. Copy your image file(s) into `kiosk-carousel/staging/global/` (or a CID folder, e.g. `kiosk-carousel/staging/206100/`).
+2. Open a terminal in the repo folder and run:
+
+```bash
+git pull
+git add kiosk-carousel/
+git commit -m "Add carousel images to staging/global"
+git push
+```
+
+**For live** (production kiosk builds):
+
+1. Copy your image file(s) into `kiosk-carousel/live/global/` (or a CID folder, e.g. `kiosk-carousel/live/206100/`).
+2. Run:
+
+```bash
+git pull
+git add kiosk-carousel/
+git commit -m "Add carousel images to live/global"
+git push
+```
+
+After pushing, GitHub Actions will automatically regenerate all index files and deploy the updated site. Kiosks can then fetch the updated `index.json` from the appropriate path.
+
+---
+
+### Adding modifier images
+
+1. Copy your image file(s) into `images/modifiers/toppings/` (or create a new subfolder for a different modifier group, e.g. `images/modifiers/syrups/`).
+2. Name the file to match the exact display name used in FranPOS (e.g. `Strawberry Milk Foam.png`).
+3. Run:
+
+```bash
+git pull
+git add images/
+git commit -m "Add modifier image: Strawberry Milk Foam"
+git push
+```
+
+---
+
+### Adding other assets
+
+For documents, sounds, videos, or miscellaneous files, follow the same pattern — copy the file into the appropriate folder, then:
+
+```bash
+git pull
+git add <folder-name>/
+git commit -m "Add <brief description of what you added>"
+git push
+```
+
+Replace `<folder-name>` with `documents`, `sounds`, `videos`, or `miscellaneous` as appropriate.
+
+---
+
+### Tips
+
+- Always run `git pull` before adding files to make sure your local copy is up to date.
+- If you're unsure whether your push worked, check the [Actions tab](https://github.com/gerry-wood-sumup/franpos_auxiliary_dam/actions) — a green checkmark means the site has been updated successfully.
+- Index pages update automatically — you never need to edit `index.html` or `index.json` files by hand.
 
 ---
 
