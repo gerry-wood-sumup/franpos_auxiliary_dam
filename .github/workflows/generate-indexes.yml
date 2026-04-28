@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 # Only allow one deployment at a time; cancel in-progress runs if a newer push arrives
 concurrency:
