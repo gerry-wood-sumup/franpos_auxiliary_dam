@@ -184,6 +184,43 @@ Replace `<folder-name>` with `documents`, `sounds`, `videos`, or `miscellaneous`
 
 ---
 
+### Scheduling a deployment with a PR
+
+If you want changes to go live at a specific date and time — for example, to coincide with a product launch — use a Pull Request with a `/schedule` command instead of pushing directly to `main`.
+
+**Step 1 — Create a branch and commit your changes:**
+
+```bash
+git pull
+git checkout -b add-levitea-promo
+# copy your files into the appropriate folder, then:
+git add kiosk-carousel/
+git commit -m "Add Levitea promo images to live/global"
+git push -u origin add-levitea-promo
+```
+
+**Step 2 — Open a Pull Request on GitHub:**
+
+Go to the repository on GitHub. You'll see a prompt to open a PR for your new branch — click **Compare & pull request**.
+
+**Step 3 — Add the `/schedule` command to the PR description:**
+
+Anywhere in the PR description, add a line in this format:
+
+```
+/schedule 2026-05-01 9:00 AM EST
+```
+
+Supported timezones: `EST`, `EDT`, `CST`, `CDT`, `MST`, `MDT`, `PST`, `PDT`, `UTC`, `GMT`.
+
+**Step 4 — Submit the PR.**
+
+The [Scheduled PR Merge workflow](.github/workflows/merge-schedule.yml) checks all open PRs every 15 minutes. When your scheduled time arrives, it will automatically merge the PR into `main`, triggering the usual index regeneration and deploy pipeline. A comment will be posted on the PR confirming the merge.
+
+**To cancel:** Simply close the PR, or edit the description to remove the `/schedule` line before the time is reached.
+
+---
+
 ### Tips
 
 - Always run `git pull` before adding files to make sure your local copy is up to date.
