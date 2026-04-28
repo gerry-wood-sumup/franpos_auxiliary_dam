@@ -242,11 +242,26 @@ Navigate the index pages by starting at the top-level folder for the media type 
 Every index page includes a built-in management bar that lets you upload, delete, and regenerate indexes directly from the browser — no git client required.
 
 **Supported actions:**
-- **Upload Files** — pick files from your computer or drag and drop them onto the page; on directory pages you can also specify a subfolder (e.g. a CID like `206100`) to create or add to a sub-folder in one step
-- **Delete** — remove an individual asset; a confirmation prompt is shown before anything is deleted
-- **Regenerate Indexes** — manually trigger an index rebuild without changing any files
 
-After any upload or delete the indexes are automatically regenerated and the page reloads once complete (typically under 60 seconds).
+- **Upload Files** — pick files from your computer or drag and drop them onto the page.
+  - On **asset pages** (e.g. `kiosk-carousel/live/global/`), files are added directly to the current folder.
+  - On **directory pages** (e.g. `kiosk-carousel/live/`), an optional **Subfolder** field lets you type a CID (e.g. `206100`) to upload files directly into a new or existing CID folder — no need to create the folder separately first.
+- **Delete File** — removes an individual asset from the current folder; a confirmation prompt is shown before anything is deleted.
+- **Delete Folder** — removes an entire CID folder and all its contents in one step; available on directory pages next to each deletable folder row.
+- **Regenerate Indexes** — manually triggers an index rebuild without changing any files; useful if the indexes ever appear stale.
+
+After any upload or delete, indexes are automatically regenerated and the page reloads once the pipeline completes (typically under 60 seconds).
+
+**Protected folders** — the following folders are structural and cannot be deleted through the UI:
+
+| Folder | Why protected |
+|--------|--------------|
+| `kiosk-carousel/live/` | Required for production kiosk resolution |
+| `kiosk-carousel/staging/` | Required for dev/staging kiosk resolution |
+| `kiosk-carousel/live/global/` | Default fallback for all live kiosks |
+| `kiosk-carousel/staging/global/` | Default fallback for all staging kiosks |
+
+CID-specific folders (e.g. `kiosk-carousel/live/206100/`) can be freely created and deleted.
 
 #### Setting up a GitHub Personal Access Token (PAT)
 
