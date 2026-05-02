@@ -266,16 +266,15 @@ CID-specific folders (e.g. `kiosk-carousel/live/206100/`) can be freely created 
 
 #### Setting up a GitHub Personal Access Token (PAT)
 
-The management UI authenticates with GitHub using a fine-grained Personal Access Token. You'll need to create one once:
+The management UI authenticates with GitHub using a classic Personal Access Token. You'll need to create one once:
 
-1. Go to **GitHub → Settings → Developer Settings → Personal access tokens → Fine-grained tokens**
-2. Click **Generate new token**
+1. Go to **GitHub → Settings → Developer Settings → Personal access tokens → Tokens (classic)**
+2. Click **Generate new token (classic)**
 3. Give it a name (e.g. `DAM Management`) and set an expiration
-4. Under **Repository access**, select **Only select repositories** and choose this repo
-5. Under **Permissions → Repository permissions**, grant:
-   - **Contents** → Read and write
-   - **Actions** → Read and write
-6. Click **Generate token** and copy it — it won't be shown again
+4. Under **Scopes**, tick:
+   - **`repo`** — full repository read/write access
+   - **`workflow`** — allows triggering GitHub Actions workflows
+5. Click **Generate token** and copy it — it won't be shown again
 
 To use it: open any DAM index page, paste the token into the **Connect** bar at the top of the page, and click **Connect**. Your session stays connected until you close the browser tab or click Disconnect. The token is stored only in your browser's session memory and is never sent anywhere except the GitHub API.
 
