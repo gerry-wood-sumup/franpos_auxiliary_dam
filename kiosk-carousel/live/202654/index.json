@@ -1,7 +1,8 @@
 {
   "folder": "202654",
-  "count": 1,
+  "count": 2,
   "images": [
+    { "name": "QA Test Image Upload.png", "url": "QA%20Test%20Image%20Upload.png" },
     { "name": "Tetris1080x1920.png", "url": "Tetris1080x1920.png" }
   ]
 }
