@@ -1,8 +1,9 @@
 {
   "folder": "global",
-  "count": 3,
+  "count": 4,
   "images": [
     { "name": "01 - XLDrinksTVDisplays1080x1920.jpg", "url": "01%20-%20XLDrinksTVDisplays1080x1920.jpg" },
+    { "name": "Felix Kiosk.png", "url": "Felix%20Kiosk.png" },
     { "name": "Levitea.png", "url": "Levitea.png" },
     { "name": "Tetris1080x1920.png", "url": "Tetris1080x1920.png" }
   ]
