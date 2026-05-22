@@ -1,14 +1,10 @@
 {
   "folder": "global",
-  "count": 8,
+  "count": 4,
   "images": [
-    { "name": "01 - XLDrinksTVDisplays1080x1920.jpg", "url": "01%20-%20XLDrinksTVDisplays1080x1920.jpg" },
     { "name": "1_EnerTea.png", "url": "1_EnerTea.png" },
     { "name": "2_Levitea.png", "url": "2_Levitea.png" },
     { "name": "3_Felix.png", "url": "3_Felix.png" },
-    { "name": "4_XL.jpg", "url": "4_XL.jpg" },
-    { "name": "Felix Kiosk.png", "url": "Felix%20Kiosk.png" },
-    { "name": "Levitea.png", "url": "Levitea.png" },
-    { "name": "Tetris1080x1920.png", "url": "Tetris1080x1920.png" }
+    { "name": "4_XL.jpg", "url": "4_XL.jpg" }
   ]
 }
