@@ -461,7 +461,7 @@ generate_leaf_index() {
   while IFS= read -r img; do
     [[ -n "$img" ]] && images+=("$img")
   done < <(
-    find "$dir" -maxdepth 1 -type f \( -iname "*.png" -o -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.gif" -o -iname "*.webp" -o -iname "*.svg" \) -exec basename {} \; | sort
+    find "$dir" -maxdepth 1 -type f \( -iname "*.png" -o -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.gif" -o -iname "*.webp" -o -iname "*.svg" \) -exec basename {} \; | sort -V
   )
 
   local count="${#images[@]}"
@@ -553,7 +553,7 @@ generate_json_index() {
   done < <(
     find "$dir" -maxdepth 1 -type f \
       \( -iname "*.png" -o -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.gif" -o -iname "*.webp" -o -iname "*.svg" \) \
-      -exec basename {} \; | sort
+      -exec basename {} \; | sort -V
   )
 
   local count="${#images[@]}"
