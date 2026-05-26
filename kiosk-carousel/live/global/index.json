@@ -2,9 +2,9 @@
   "folder": "global",
   "count": 4,
   "images": [
-    { "name": "1_EnerTea.png", "url": "1_EnerTea.png" },
-    { "name": "2_Levitea.png", "url": "2_Levitea.png" },
-    { "name": "3_Felix.png", "url": "3_Felix.png" },
-    { "name": "4_XL.jpg", "url": "4_XL.jpg" }
+    { "name": "01_EnerTea.png", "url": "01_EnerTea.png" },
+    { "name": "02_Levitea.png", "url": "02_Levitea.png" },
+    { "name": "03_Felix.png", "url": "03_Felix.png" },
+    { "name": "04_XL.jpg", "url": "04_XL.jpg" }
   ]
 }
