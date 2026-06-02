@@ -44,30 +44,37 @@
   <div id="toast-container"></div>
   <div class="breadcrumb"><a href="../../../index.html">Home</a> / <a href="../../index.html">kiosk-carousel</a> / <a href="../index.html">live</a> / 202654</div>
   <h1>202654</h1>
+  <p class="count">1 image</p>
   <div class="toolbar mgmt" style="display:none">
     <button class="btn btn-primary" id="dam-upload-btn">⬆ Upload Files</button>
     <input type="file" id="dam-file-input" multiple style="display:none">
-    <span class="subfolder-wrap">
-      into subfolder: <input type="text" id="dam-subfolder" placeholder="e.g. 206100 (optional)">
-    </span>
   </div>
-  <div class="drop-zone mgmt" id="dam-drop-zone" style="display:none">Drop files here to upload (into subfolder if specified above), or click to browse</div>
+  <div class="drop-zone mgmt" id="dam-drop-zone" style="display:none">Drop image files here, or click to browse</div>
   <table>
     <thead>
       <tr>
-        <th>Folder</th>
-        <th>Description</th>
+        <th>Preview</th>
+        <th>File Name</th>
+        <th>Path</th>
         <th class="mgmt" style="display:none">Actions</th>
       </tr>
     </thead>
     <tbody>
+      <tr>
+        <td><img class="thumb" src="Blank.png" alt="Blank"></td>
+        <td><a href="Blank.png">Blank.png</a></td>
+        <td>kiosk-carousel/live/202654/Blank.png</td>
+        <td class="mgmt" style="display:none">
+          <button class="btn btn-danger dam-delete-btn" data-path="kiosk-carousel/live/202654/Blank.png">Delete</button>
+        </td>
+      </tr>
     </tbody>
   </table>
   <script>
     var DAM_OWNER  = 'gerry-wood-sumup';
     var DAM_REPO   = 'franpos_auxiliary_dam';
     var DAM_PATH   = 'kiosk-carousel/live/202654';
-    var DAM_IS_DIR = true;
+    var DAM_IS_DIR = false;
   </script>
 <script>
 (function () {
