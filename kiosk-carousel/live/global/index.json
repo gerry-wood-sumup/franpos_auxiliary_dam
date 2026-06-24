@@ -1,8 +1,7 @@
 {
   "folder": "global",
-  "count": 6,
+  "count": 5,
   "images": [
-    { "name": "00_FelixSleeve.jpg", "url": "00_FelixSleeve.jpg" },
     { "name": "01_MobileApp.png", "url": "01_MobileApp.png" },
     { "name": "02_EnerTea.png", "url": "02_EnerTea.png" },
     { "name": "03_Levitea.png", "url": "03_Levitea.png" },
