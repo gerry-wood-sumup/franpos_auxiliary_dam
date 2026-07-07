@@ -1,7 +1,9 @@
 {
   "folder": "202654",
-  "count": 5,
+  "count": 7,
   "images": [
+    { "name": "00_Felix_Tumbler.jpg", "url": "00_Felix_Tumbler.jpg" },
+    { "name": "00_Magic_Brewed.png", "url": "00_Magic_Brewed.png" },
     { "name": "01 - XLDrinksTVDisplays1080x1920.jpg", "url": "01%20-%20XLDrinksTVDisplays1080x1920.jpg" },
     { "name": "Kiosk background template.jpg", "url": "Kiosk%20background%20template.jpg" },
     { "name": "Levitea.png", "url": "Levitea.png" },

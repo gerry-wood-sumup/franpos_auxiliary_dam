@@ -1,7 +1,9 @@
 {
   "folder": "206330",
-  "count": 6,
+  "count": 8,
   "images": [
+    { "name": "00_Felix_Tumbler.jpg", "url": "00_Felix_Tumbler.jpg" },
+    { "name": "00_Magic_Brewed.png", "url": "00_Magic_Brewed.png" },
     { "name": "01_Bobacinno.png", "url": "01_Bobacinno.png" },
     { "name": "02_EnerTea.png", "url": "02_EnerTea.png" },
     { "name": "03_MobileApp.png", "url": "03_MobileApp.png" },
