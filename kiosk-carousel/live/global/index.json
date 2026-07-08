@@ -1,13 +1,11 @@
 {
   "folder": "global",
-  "count": 7,
+  "count": 5,
   "images": [
-    { "name": "00_Felix_Tumbler.jpg", "url": "00_Felix_Tumbler.jpg" },
     { "name": "00_Magic_Brewed.png", "url": "00_Magic_Brewed.png" },
-    { "name": "01_MobileApp.png", "url": "01_MobileApp.png" },
-    { "name": "02_EnerTea.png", "url": "02_EnerTea.png" },
-    { "name": "03_Levitea.png", "url": "03_Levitea.png" },
-    { "name": "04_Felix.png", "url": "04_Felix.png" },
-    { "name": "05_XL.jpg", "url": "05_XL.jpg" }
+    { "name": "01_EnerTea.png", "url": "01_EnerTea.png" },
+    { "name": "02_Levitea.png", "url": "02_Levitea.png" },
+    { "name": "03_MobileApp.png", "url": "03_MobileApp.png" },
+    { "name": "04_Felix.png", "url": "04_Felix.png" }
   ]
 }
