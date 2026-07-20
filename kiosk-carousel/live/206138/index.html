@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>live — DAM</title>
+  <title>206138 — DAM</title>
   <style>
     body { font-family: sans-serif; max-width: 960px; margin: 2rem auto; padding: 0 1rem; color: #222; }
     h1 { font-size: 1.4rem; margin-bottom: 0.25rem; text-transform: capitalize; }
@@ -42,336 +42,54 @@
 <body>
   <div id="auth-bar"></div>
   <div id="toast-container"></div>
-  <div class="breadcrumb"><a href="../../index.html">Home</a> / <a href="../index.html">kiosk-carousel</a> / live</div>
-  <h1>live</h1>
+  <div class="breadcrumb"><a href="../../../index.html">Home</a> / <a href="../../index.html">kiosk-carousel</a> / <a href="../index.html">live</a> / 206138</div>
+  <h1>206138</h1>
+  <p class="count">4 images</p>
   <div class="toolbar mgmt" style="display:none">
     <button class="btn btn-primary" id="dam-upload-btn">⬆ Upload Files</button>
     <input type="file" id="dam-file-input" multiple style="display:none">
-    <span class="subfolder-wrap">
-      into subfolder: <input type="text" id="dam-subfolder" placeholder="e.g. 206100 (optional)">
-    </span>
   </div>
-  <div class="drop-zone mgmt" id="dam-drop-zone" style="display:none">Drop files here to upload (into subfolder if specified above), or click to browse</div>
+  <div class="drop-zone mgmt" id="dam-drop-zone" style="display:none">Drop image files here, or click to browse</div>
   <table>
     <thead>
       <tr>
-        <th>Folder</th>
-        <th>Description</th>
+        <th>Preview</th>
+        <th>File Name</th>
+        <th>Path</th>
         <th class="mgmt" style="display:none">Actions</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td class="folder"><a href="global/index.html">global</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none"></td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="202654/index.html">202654</a></td>
-        <td></td>
+        <td><img class="thumb" src="00_Magic_Brewed.png" alt="00_Magic_Brewed"></td>
+        <td><a href="00_Magic_Brewed.png">00_Magic_Brewed.png</a></td>
+        <td>kiosk-carousel/live/206138/00_Magic_Brewed.png</td>
         <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/202654">Delete</button>
+          <button class="btn btn-danger dam-delete-btn" data-path="kiosk-carousel/live/206138/00_Magic_Brewed.png">Delete</button>
         </td>
       </tr>
       <tr>
-        <td class="folder"><a href="203298/index.html">203298</a></td>
-        <td></td>
+        <td><img class="thumb" src="01_Bobaccino_Felix.png" alt="01_Bobaccino_Felix"></td>
+        <td><a href="01_Bobaccino_Felix.png">01_Bobaccino_Felix.png</a></td>
+        <td>kiosk-carousel/live/206138/01_Bobaccino_Felix.png</td>
         <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/203298">Delete</button>
+          <button class="btn btn-danger dam-delete-btn" data-path="kiosk-carousel/live/206138/01_Bobaccino_Felix.png">Delete</button>
         </td>
       </tr>
       <tr>
-        <td class="folder"><a href="204082/index.html">204082</a></td>
-        <td></td>
+        <td><img class="thumb" src="02_MobileApp.png" alt="02_MobileApp"></td>
+        <td><a href="02_MobileApp.png">02_MobileApp.png</a></td>
+        <td>kiosk-carousel/live/206138/02_MobileApp.png</td>
         <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/204082">Delete</button>
+          <button class="btn btn-danger dam-delete-btn" data-path="kiosk-carousel/live/206138/02_MobileApp.png">Delete</button>
         </td>
       </tr>
       <tr>
-        <td class="folder"><a href="205270/index.html">205270</a></td>
-        <td></td>
+        <td><img class="thumb" src="03_Levitea.png" alt="03_Levitea"></td>
+        <td><a href="03_Levitea.png">03_Levitea.png</a></td>
+        <td>kiosk-carousel/live/206138/03_Levitea.png</td>
         <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/205270">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="205561/index.html">205561</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/205561">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="205603/index.html">205603</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/205603">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="205763/index.html">205763</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/205763">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="206127/index.html">206127</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/206127">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="206128/index.html">206128</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/206128">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="206129/index.html">206129</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/206129">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="206130/index.html">206130</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/206130">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="206131/index.html">206131</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/206131">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="206132/index.html">206132</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/206132">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="206133/index.html">206133</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/206133">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="206134/index.html">206134</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/206134">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="206135/index.html">206135</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/206135">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="206136/index.html">206136</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/206136">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="206137/index.html">206137</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/206137">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="206138/index.html">206138</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/206138">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="206139/index.html">206139</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/206139">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="206140/index.html">206140</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/206140">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="206141/index.html">206141</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/206141">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="206142/index.html">206142</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/206142">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="206143/index.html">206143</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/206143">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="206144/index.html">206144</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/206144">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="206145/index.html">206145</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/206145">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="206146/index.html">206146</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/206146">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="206147/index.html">206147</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/206147">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="206148/index.html">206148</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/206148">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="206149/index.html">206149</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/206149">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="206150/index.html">206150</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/206150">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="206365/index.html">206365</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/206365">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="206409/index.html">206409</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/206409">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="206562/index.html">206562</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/206562">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="206634/index.html">206634</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/206634">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="206659/index.html">206659</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/206659">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="206660/index.html">206660</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/206660">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="206664/index.html">206664</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/206664">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="206768/index.html">206768</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/206768">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="206790/index.html">206790</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/206790">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="206867/index.html">206867</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/206867">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="206880/index.html">206880</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/206880">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="206910/index.html">206910</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/206910">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="folder"><a href="207083/index.html">207083</a></td>
-        <td></td>
-        <td class="mgmt" style="display:none">
-          <button class="btn btn-danger dam-delete-folder-btn" data-path="kiosk-carousel/live/207083">Delete</button>
+          <button class="btn btn-danger dam-delete-btn" data-path="kiosk-carousel/live/206138/03_Levitea.png">Delete</button>
         </td>
       </tr>
     </tbody>
@@ -379,8 +97,8 @@
   <script>
     var DAM_OWNER  = 'gerry-wood-sumup';
     var DAM_REPO   = 'franpos_auxiliary_dam';
-    var DAM_PATH   = 'kiosk-carousel/live';
-    var DAM_IS_DIR = true;
+    var DAM_PATH   = 'kiosk-carousel/live/206138';
+    var DAM_IS_DIR = false;
   </script>
 <script>
 (function () {
