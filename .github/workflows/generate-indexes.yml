@@ -5,6 +5,8 @@ on:
     branches:
       - main
   workflow_dispatch:
+  # Merges made by the scheduled-merge workflow use GITHUB_TOKEN, which cannot trigger `push`.
+  workflow_call:
 
 # Only allow one deployment at a time; cancel in-progress runs if a newer push arrives
 concurrency:
