@@ -195,16 +195,20 @@ Go to the repository on GitHub. You'll see a prompt to open a PR for your new br
 Anywhere in the PR description, add a line in this format:
 
 ```
-/schedule 2026-05-01 9:00 AM EST
+/schedule 2026-05-01 9:00 AM EDT
 ```
 
 Supported timezones: `EST`, `EDT`, `CST`, `CDT`, `MST`, `MDT`, `PST`, `PDT`, `UTC`, `GMT`.
 
+> **Timezone note:** These abbreviations are fixed UTC offsets; daylight saving time is not detected automatically. Use `EDT`, `CDT`, `MDT`, or `PDT` while daylight saving time is active, and `EST`, `CST`, `MST`, or `PST` during standard time. When in doubt, use `UTC`.
+
 **Step 4 — Submit the PR.**
 
-The [Scheduled PR Merge workflow](.github/workflows/merge-schedule.yml) checks all open PRs every 15 minutes. When your scheduled time arrives, it will automatically merge the PR into `main`, triggering the usual index regeneration and deploy pipeline. A comment will be posted on the PR confirming the merge.
+The [Scheduled PR Merge workflow](.github/workflows/merge-schedule.yml) is configured to check all open PRs every 15 minutes. When GitHub starts a run after the scheduled time, it automatically merges the PR into `main`, regenerates the indexes from the latest `main`, and deploys GitHub Pages. A comment is posted on the PR confirming the merge.
 
-> **Note:** Scheduled merges are only honoured for PRs opened by repository collaborators. PRs from forks or external contributors with a `/schedule` command will be silently skipped.
+> **Timing note:** GitHub Actions schedules are best-effort. Runs can be delayed or dropped during periods of high load, so a scheduled merge is not guaranteed to happen within 15 minutes. An overdue PR remains eligible and will be merged by the next run. For time-sensitive changes, monitor the workflow and use the manual procedure in the [Tier 3 Operations Runbook](#tier-3-operations-runbook) if necessary.
+
+> **Access note:** Scheduled merges are only honoured for PRs opened by repository collaborators. PRs from forks or external contributors with a `/schedule` command are skipped and recorded in the workflow log.
 
 **To cancel:** Simply close the PR, or edit the description to remove the `/schedule` line before the time is reached.
 
@@ -215,7 +219,7 @@ The [Scheduled PR Merge workflow](.github/workflows/merge-schedule.yml) checks a
 ### Repository Structure
 
 ```
-franpos_modifier_cms/
+franpos_auxiliary_dam/
 ├── images/
 │   └── modifiers/
 │       └── toppings/
@@ -272,9 +276,31 @@ bash scripts/generate-indexes.sh
 
 ### Scheduled PR Merge Workflow
 
-The workflow [`.github/workflows/merge-schedule.yml`](.github/workflows/merge-schedule.yml) runs every 15 minutes and auto-merges any open PR whose description contains a `/schedule` command once the specified date and time is reached. Only PRs from repository collaborators are eligible.
+The workflow [`.github/workflows/merge-schedule.yml`](.github/workflows/merge-schedule.yml) requests a run every 15 minutes and auto-merges any eligible open PR whose description contains a due `/schedule` command. Only PRs from repository collaborators are eligible.
 
-The workflow can also be triggered manually via **Actions → Scheduled PR Merge → Run workflow**.
+Merges performed with `GITHUB_TOKEN` do not emit another `push` workflow event. After one or more scheduled PRs merge, this workflow therefore calls `generate-indexes.yml` directly. That reusable workflow checks out the latest default-branch revision, regenerates and commits index changes, and deploys GitHub Pages.
+
+### Tier 3 Operations Runbook
+
+Use this procedure when a scheduled deployment is late or the published indexes appear stale:
+
+1. Open the PR and confirm it is still open, mergeable, authored by a repository collaborator, and contains exactly one valid `/schedule YYYY-MM-DD H:MM AM|PM TZ` command.
+2. Confirm the timezone abbreviation uses the intended fixed offset. For example, `4:30 PM EDT` is `20:30 UTC`, while `4:30 PM EST` is `21:30 UTC`.
+3. Check [Scheduled PR Merge workflow runs](https://github.com/gerry-wood-sumup/franpos_auxiliary_dam/actions/workflows/merge-schedule.yml). GitHub may delay or drop scheduled events even though the workflow requests a 15-minute cadence.
+4. If the PR is overdue, select **Run workflow**, choose `main`, and run it manually.
+5. For an eligible PR, expect `merge-scheduled-prs` followed by `regenerate-and-deploy / generate-and-deploy`. The deployment job is intentionally skipped when no PR was merged.
+6. Confirm the PR received the automatic merge comment, `main` contains a subsequent `chore: regenerate index pages [skip ci]` commit when indexes changed, and **Deploy to GitHub Pages** succeeded.
+7. If the PR merged but Pages or indexes are stale, manually run [Generate Index Pages & Deploy](https://github.com/gerry-wood-sumup/franpos_auxiliary_dam/actions/workflows/generate-indexes.yml) against `main`.
+
+Common failure indicators:
+
+| Symptom | Likely cause | Action |
+|---------|--------------|--------|
+| No run near the requested time | GitHub delayed or dropped the cron event | Manually run **Scheduled PR Merge** |
+| Merge job succeeds but deployment is skipped | No PR was due or eligible | Check the schedule, timezone, author association, and mergeability in the job log |
+| PR receives a scheduled merge failure comment | Conflict, branch protection, or another GitHub merge API error | Resolve the reported error, then run the workflow again |
+| PR is merged but indexes are stale | Index generation or Pages deployment did not complete | Manually run **Generate Index Pages & Deploy** and inspect the failed step |
+| Generated-index push is rejected | Another commit reached `main` during generation | Re-run the workflow; it rebases before pushing and normally resolves this race automatically |
 
 ### Search Engine Blocking
 
