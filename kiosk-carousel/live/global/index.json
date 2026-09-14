@@ -1,10 +1,11 @@
 {
   "folder": "global",
-  "count": 4,
+  "count": 5,
   "images": [
     { "name": "00_Anniversary_Birthday.png", "url": "00_Anniversary_Birthday.png" },
-    { "name": "01_Nothing_Basic_Pumpkin_Global.png", "url": "01_Nothing_Basic_Pumpkin_Global.png" },
-    { "name": "02_Bobacinno.png", "url": "02_Bobacinno.png" },
-    { "name": "03_Bobaccino_Felix.png", "url": "03_Bobaccino_Felix.png" }
+    { "name": "01_Birthday_Bottle.png", "url": "01_Birthday_Bottle.png" },
+    { "name": "02_Nothing_Basic_Pumpkin_Global.png", "url": "02_Nothing_Basic_Pumpkin_Global.png" },
+    { "name": "03_Bobacinno.png", "url": "03_Bobacinno.png" },
+    { "name": "04_Bobaccino_Felix.png", "url": "04_Bobaccino_Felix.png" }
   ]
 }
