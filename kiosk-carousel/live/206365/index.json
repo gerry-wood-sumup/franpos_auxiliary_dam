@@ -1,12 +1,10 @@
 {
   "folder": "206365",
-  "count": 6,
+  "count": 4,
   "images": [
-    { "name": "00_Anniversary_Birthday.png", "url": "00_Anniversary_Birthday.png" },
-    { "name": "01_Birthday_Bottle.png", "url": "01_Birthday_Bottle.png" },
-    { "name": "02_Nothing_Basic_Pumpkin_Global.png", "url": "02_Nothing_Basic_Pumpkin_Global.png" },
-    { "name": "03_Bobacinno.png", "url": "03_Bobacinno.png" },
-    { "name": "04_Bobaccino_Felix.png", "url": "04_Bobaccino_Felix.png" },
-    { "name": "05_Augusta_Only.png", "url": "05_Augusta_Only.png" }
+    { "name": "00_Nothing_Basic_Pumpkin_Global.png", "url": "00_Nothing_Basic_Pumpkin_Global.png" },
+    { "name": "01_Bobacinno.png", "url": "01_Bobacinno.png" },
+    { "name": "02_Bobaccino_Felix.png", "url": "02_Bobaccino_Felix.png" },
+    { "name": "03_Augusta_Only.png", "url": "03_Augusta_Only.png" }
   ]
 }
