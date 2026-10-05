@@ -109,6 +109,7 @@ jobs:
     if: needs.merge-scheduled-prs.outputs.merged == 'true'
     permissions:
       contents: write
+      pull-requests: write
       pages: write
       id-token: write
     uses: ./.github/workflows/generate-indexes.yml
