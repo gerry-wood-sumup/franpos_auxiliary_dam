@@ -263,6 +263,7 @@ On every push to `main`, the **GitHub Actions workflow** ([`.github/workflows/ge
 1. Runs [`scripts/generate-indexes.sh`](scripts/generate-indexes.sh) to regenerate all `index.html` and `index.json` files
 2. Commits any updated index files back to `main`
 3. Deploys the site to GitHub Pages
+4. Merges the latest `main` into eligible open PR branches after deployment succeeds
 
 **The script discovers media directories automatically.** Any new top-level directory added to the repo will be scanned and indexed as long as it contains supported media files. No configuration changes are required.
 
@@ -279,6 +280,16 @@ bash scripts/generate-indexes.sh
 The workflow [`.github/workflows/merge-schedule.yml`](.github/workflows/merge-schedule.yml) requests a run every 15 minutes and auto-merges any eligible open PR whose description contains a due `/schedule` command. Only PRs from repository collaborators are eligible.
 
 Merges performed with `GITHUB_TOKEN` do not emit another `push` workflow event. After one or more scheduled PRs merge, this workflow therefore calls `generate-indexes.yml` directly. That reusable workflow checks out the latest default-branch revision, regenerates and commits index changes, and deploys GitHub Pages.
+
+### Automatic PR Branch Sync
+
+After a successful index generation and Pages deployment, `generate-indexes.yml` merges the latest `main` into open, non-draft PR branches in this repository that target `main`. Fork PRs are skipped. This runs for normal pushes, manual index rebuilds, and scheduled deployments, so an end-date PR can pick up the start-date merge and regenerated indexes.
+
+Branch updates use merge commits rather than rebases: no history is rewritten and no force-push is required. Scheduled PRs still squash-merge, keeping `main` linear. The sync preserves PR descriptions and `/schedule` commands; it does not create an end-date PR or guarantee that it will merge without conflicts.
+
+If a merge would conflict, the branch is left unchanged and the workflow posts a comment on the PR with manual resolution instructions. Repeated conflicts update the same bot comment rather than posting duplicates. Other API or permission failures fail the sync job and are recorded in its log; neither kind of failure rolls back the completed deployment.
+
+Updates use `GITHUB_TOKEN`, so they do not trigger new push or PR workflow runs. Repositories requiring checks on the updated PR revision may need a GitHub App token or a separate check-dispatch mechanism before enabling those requirements.
 
 ### Tier 3 Operations Runbook
 
