@@ -56,3 +56,23 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deploy
         uses: actions/deploy-pages@v4
+
+  sync-pr-branches:
+    needs: generate-and-deploy
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout trusted branch-sync script
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+
+      - name: Merge main into eligible PR branches
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const syncBranches = require('./scripts/sync-pr-branches.cjs');
+            await syncBranches({ github, context, core });
