@@ -1,9 +1,12 @@
 {
   "folder": "global",
-  "count": 3,
+  "count": 6,
   "images": [
-    { "name": "01_Nothing_Basic_Pumpkin_Global.png", "url": "01_Nothing_Basic_Pumpkin_Global.png" },
-    { "name": "02_Bobacinno.png", "url": "02_Bobacinno.png" },
-    { "name": "03_Bobaccino_Felix.png", "url": "03_Bobaccino_Felix.png" }
+    { "name": "01_Tea-ramisu.png", "url": "01_Tea-ramisu.png" },
+    { "name": "02_Bobaccino.jpg", "url": "02_Bobaccino.jpg" },
+    { "name": "03_Levitea.png", "url": "03_Levitea.png" },
+    { "name": "04_Felix_Evergreen.png", "url": "04_Felix_Evergreen.png" },
+    { "name": "05_XL.jpg", "url": "05_XL.jpg" },
+    { "name": "06_App_Download_QR.png", "url": "06_App_Download_QR.png" }
   ]
 }
