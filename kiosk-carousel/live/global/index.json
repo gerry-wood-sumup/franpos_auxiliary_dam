@@ -4,9 +4,9 @@
   "images": [
     { "name": "01_Tea-ramisu.png", "url": "01_Tea-ramisu.png" },
     { "name": "02_Bobaccino.jpg", "url": "02_Bobaccino.jpg" },
-    { "name": "03_Levitea.png", "url": "03_Levitea.png" },
-    { "name": "04_Felix_Evergreen.png", "url": "04_Felix_Evergreen.png" },
-    { "name": "05_XL.jpg", "url": "05_XL.jpg" },
-    { "name": "06_App_Download_QR.png", "url": "06_App_Download_QR.png" }
+    { "name": "03_App_Download_QR.png", "url": "03_App_Download_QR.png" },
+    { "name": "04_Levitea.png", "url": "04_Levitea.png" },
+    { "name": "05_Felix_Evergreen.png", "url": "05_Felix_Evergreen.png" },
+    { "name": "06_XL.jpg", "url": "06_XL.jpg" }
   ]
 }
