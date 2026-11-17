@@ -265,7 +265,7 @@ On every push to `main`, the **GitHub Actions workflow** ([`.github/workflows/ge
 3. Deploys the site to GitHub Pages
 4. Merges the latest `main` into eligible open PR branches after deployment succeeds
 
-The repository must have an Actions secret named `REPO_AUTOMATION_TOKEN`. It must be a fine-grained token with Contents read/write access to this repository, owned by an identity allowed to bypass the `main` ruleset. The workflow uses it only to check out and push generated indexes; the scheduled PR merge and PR-branch sync continue to use `GITHUB_TOKEN`.
+Automated index updates require a repository Actions secret.
 
 **The script discovers media directories automatically.** Any new top-level directory added to the repo will be scanned and indexed as long as it contains supported media files. No configuration changes are required.
 
@@ -281,7 +281,7 @@ bash scripts/generate-indexes.sh
 
 The workflow [`.github/workflows/merge-schedule.yml`](.github/workflows/merge-schedule.yml) requests a run every 15 minutes and auto-merges any eligible open PR whose description contains a due `/schedule` command. Only PRs from repository collaborators are eligible.
 
-Merges performed with `GITHUB_TOKEN` do not emit another `push` workflow event. After one or more scheduled PRs merge, this workflow therefore calls `generate-indexes.yml` directly and passes `REPO_AUTOMATION_TOKEN` to it. That reusable workflow checks out the latest default-branch revision, regenerates and commits index changes, and deploys GitHub Pages.
+After one or more scheduled PRs merge, this workflow calls `generate-indexes.yml` to regenerate indexes and deploy GitHub Pages.
 
 ### Automatic PR Branch Sync
 
