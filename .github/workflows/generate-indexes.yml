@@ -7,6 +7,9 @@ on:
   workflow_dispatch:
   # Merges made by the scheduled-merge workflow use GITHUB_TOKEN, which cannot trigger `push`.
   workflow_call:
+    secrets:
+      REPO_AUTOMATION_TOKEN:
+        required: true
 
 # Only allow one deployment at a time; cancel in-progress runs if a newer push arrives
 concurrency:
@@ -29,6 +32,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          token: ${{ secrets.REPO_AUTOMATION_TOKEN }}
           # Reusable calls otherwise check out the caller's pre-merge SHA.
           ref: ${{ github.event.repository.default_branch }}
 

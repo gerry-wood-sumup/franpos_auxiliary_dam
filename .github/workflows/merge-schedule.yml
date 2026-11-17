@@ -113,3 +113,5 @@ jobs:
       pages: write
       id-token: write
     uses: ./.github/workflows/generate-indexes.yml
+    secrets:
+      REPO_AUTOMATION_TOKEN: ${{ secrets.REPO_AUTOMATION_TOKEN }}
