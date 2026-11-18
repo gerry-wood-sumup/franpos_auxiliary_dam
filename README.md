@@ -204,9 +204,9 @@ Supported timezones: `EST`, `EDT`, `CST`, `CDT`, `MST`, `MDT`, `PST`, `PDT`, `UT
 
 **Step 4 — Submit the PR.**
 
-The [Scheduled PR Merge workflow](.github/workflows/merge-schedule.yml) is configured to check all open PRs every 15 minutes. When GitHub starts a run after the scheduled time, it automatically merges the PR into `main`, regenerates the indexes from the latest `main`, and deploys GitHub Pages. A comment is posted on the PR confirming the merge.
+The [Scheduled PR Merge workflow](.github/workflows/merge-schedule.yml) is configured to check all open PRs twice daily at 4:00 AM and noon fixed EST (09:00 and 17:00 UTC). During daylight saving time, these checks occur at 5:00 AM and 1:00 PM EDT. When GitHub starts a run after the PR's scheduled time, it automatically merges the PR into `main`, regenerates the indexes from the latest `main`, and deploys GitHub Pages. A comment is posted on the PR confirming the merge.
 
-> **Timing note:** GitHub Actions schedules are best-effort. Runs can be delayed or dropped during periods of high load, so a scheduled merge is not guaranteed to happen within 15 minutes. An overdue PR remains eligible and will be merged by the next run. For time-sensitive changes, monitor the workflow and use the manual procedure in the [Tier 3 Operations Runbook](#tier-3-operations-runbook) if necessary.
+> **Timing note:** PRs become eligible at their `/schedule` time but wait for the next daily check; a PR due after the noon EST check waits until the next morning. GitHub Actions schedules are best-effort, and runs can be delayed or dropped during periods of high load. An overdue PR remains eligible for the next run. For time-sensitive changes, monitor the workflow and use the manual procedure in the [Tier 3 Operations Runbook](#tier-3-operations-runbook) if necessary.
 
 > **Access note:** Scheduled merges are only honoured for PRs opened by repository collaborators. PRs from forks or external contributors with a `/schedule` command are skipped and recorded in the workflow log.
 
@@ -279,7 +279,7 @@ bash scripts/generate-indexes.sh
 
 ### Scheduled PR Merge Workflow
 
-The workflow [`.github/workflows/merge-schedule.yml`](.github/workflows/merge-schedule.yml) requests a run every 15 minutes and auto-merges any eligible open PR whose description contains a due `/schedule` command. Only PRs from repository collaborators are eligible.
+The workflow [`.github/workflows/merge-schedule.yml`](.github/workflows/merge-schedule.yml) requests runs at 09:00 and 17:00 UTC daily (`0 9,17 * * *`), equivalent to 4:00 AM and noon fixed EST year-round. It auto-merges any eligible open PR whose description contains a due `/schedule` command. Only PRs from repository collaborators are eligible.
 
 After one or more scheduled PRs merge, this workflow calls `generate-indexes.yml` to regenerate indexes and deploy GitHub Pages.
 
@@ -299,7 +299,7 @@ Use this procedure when a scheduled deployment is late or the published indexes 
 
 1. Open the PR and confirm it is still open, mergeable, authored by a repository collaborator, and contains exactly one valid `/schedule YYYY-MM-DD H:MM AM|PM TZ` command.
 2. Confirm the timezone abbreviation uses the intended fixed offset. For example, `4:30 PM EDT` is `20:30 UTC`, while `4:30 PM EST` is `21:30 UTC`.
-3. Check [Scheduled PR Merge workflow runs](https://github.com/gerry-wood-sumup/franpos_auxiliary_dam/actions/workflows/merge-schedule.yml). GitHub may delay or drop scheduled events even though the workflow requests a 15-minute cadence.
+3. Check [Scheduled PR Merge workflow runs](https://github.com/gerry-wood-sumup/franpos_auxiliary_dam/actions/workflows/merge-schedule.yml). GitHub may delay or drop scheduled events even though the workflow requests daily checks at 09:00 and 17:00 UTC.
 4. If the PR is overdue, select **Run workflow**, choose `main`, and run it manually.
 5. For an eligible PR, expect `merge-scheduled-prs` followed by `regenerate-and-deploy / generate-and-deploy`. The deployment job is intentionally skipped when no PR was merged.
 6. Confirm the PR received the automatic merge comment, `main` contains a subsequent `chore: regenerate index pages [skip ci]` commit when indexes changed, and **Deploy to GitHub Pages** succeeded.
