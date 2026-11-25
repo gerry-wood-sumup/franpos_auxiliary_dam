@@ -1,14 +1,13 @@
 {
   "folder": "206127",
-  "count": 8,
+  "count": 7,
   "images": [
-    { "name": "00_Tea-ramisu_BOGO_Rockville.jpg", "url": "00_Tea-ramisu_BOGO_Rockville.jpg" },
-    { "name": "01_Gong_cha_Cakes.jpg", "url": "01_Gong_cha_Cakes.jpg" },
-    { "name": "02_Tea-ramisu.png", "url": "02_Tea-ramisu.png" },
-    { "name": "03_Bobaccino.jpg", "url": "03_Bobaccino.jpg" },
-    { "name": "04_App_Download_QR.png", "url": "04_App_Download_QR.png" },
-    { "name": "05_Levitea.png", "url": "05_Levitea.png" },
-    { "name": "06_Felix_Evergreen.png", "url": "06_Felix_Evergreen.png" },
-    { "name": "07_XL.jpg", "url": "07_XL.jpg" }
+    { "name": "00_Gong_cha_Cakes.jpg", "url": "00_Gong_cha_Cakes.jpg" },
+    { "name": "01_Tea-ramisu.png", "url": "01_Tea-ramisu.png" },
+    { "name": "02_Bobaccino.jpg", "url": "02_Bobaccino.jpg" },
+    { "name": "03_App_Download_QR.png", "url": "03_App_Download_QR.png" },
+    { "name": "04_Levitea.png", "url": "04_Levitea.png" },
+    { "name": "05_Felix_Evergreen.png", "url": "05_Felix_Evergreen.png" },
+    { "name": "06_XL.jpg", "url": "06_XL.jpg" }
   ]
 }
